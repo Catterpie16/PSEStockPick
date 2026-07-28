@@ -1,272 +1,306 @@
+Try AI directly in your favorite apps … Use Gemini to generate drafts and refine content, plus get Gemini Pro with access to Google's next-gen AI
+latest_recommendations.json
+1
+100%
 [
     {
         "Ticker":"SCC",
+        "Company_Name":"Semirara Mining & Power",
         "Close_Price":21.9,
         "Target_Price_10pct":24.09,
         "Probability_Pct":73.36,
         "Signal":"STRONG BUY",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"WLCON",
+        "Company_Name":"Wilcon Depot, Inc.",
         "Close_Price":5.7,
         "Target_Price_10pct":6.27,
         "Probability_Pct":72.21,
         "Signal":"STRONG BUY",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"DMC",
+        "Company_Name":"PSE Stock",
         "Close_Price":7.3,
         "Target_Price_10pct":8.03,
         "Probability_Pct":72.19,
         "Signal":"STRONG BUY",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"CNVRG",
+        "Company_Name":"Converge ICT Solutions",
         "Close_Price":9.51,
         "Target_Price_10pct":10.46,
         "Probability_Pct":71.49,
         "Signal":"STRONG BUY",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"ALI",
+        "Company_Name":"Ayala Land, Inc.",
         "Close_Price":15.7,
         "Target_Price_10pct":17.27,
         "Probability_Pct":60.47,
         "Signal":"STRONG BUY",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"JFC",
+        "Company_Name":"Jollibee Foods Corp.",
         "Close_Price":146.5,
         "Target_Price_10pct":161.15,
         "Probability_Pct":60.28,
         "Signal":"STRONG BUY",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"ICT",
+        "Company_Name":"Intl Container Terminal",
         "Close_Price":930.0,
         "Target_Price_10pct":1023.0,
         "Probability_Pct":58.41,
         "Signal":"NEUTRAL \/ WATCH",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"SM",
+        "Company_Name":"PSE Stock",
         "Close_Price":601.0,
         "Target_Price_10pct":661.1,
         "Probability_Pct":54.69,
         "Signal":"NEUTRAL \/ WATCH",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"SMPH",
+        "Company_Name":"SM Prime Holdings",
         "Close_Price":18.38,
         "Target_Price_10pct":20.22,
         "Probability_Pct":54.04,
         "Signal":"NEUTRAL \/ WATCH",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"URC",
+        "Company_Name":"Universal Robina Corp.",
         "Close_Price":64.35,
         "Target_Price_10pct":70.78,
         "Probability_Pct":52.15,
         "Signal":"NEUTRAL \/ WATCH",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"BDO",
+        "Company_Name":"BDO Unibank, Inc.",
         "Close_Price":127.7,
         "Target_Price_10pct":140.47,
         "Probability_Pct":50.25,
         "Signal":"NEUTRAL \/ WATCH",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"BPI",
+        "Company_Name":"Bank of the Philippine Islands",
         "Close_Price":104.0,
         "Target_Price_10pct":114.4,
         "Probability_Pct":49.58,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"GTCAP",
+        "Company_Name":"GT Capital Holdings",
         "Close_Price":478.8,
         "Target_Price_10pct":526.68,
         "Probability_Pct":48.66,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"AC",
+        "Company_Name":"Ayala Corporation",
         "Close_Price":486.8,
         "Target_Price_10pct":535.48,
         "Probability_Pct":48.55,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"CNPF",
+        "Company_Name":"PSE Stock",
         "Close_Price":31.6,
         "Target_Price_10pct":34.76,
         "Probability_Pct":48.49,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"TEL",
+        "Company_Name":"PLDT Inc.",
         "Close_Price":1161.0,
         "Target_Price_10pct":1277.1,
         "Probability_Pct":47.96,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"PGOLD",
+        "Company_Name":"Puregold Price Club",
         "Close_Price":40.05,
         "Target_Price_10pct":44.06,
         "Probability_Pct":47.79,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"JGS",
+        "Company_Name":"PSE Stock",
         "Close_Price":25.6,
         "Target_Price_10pct":28.16,
         "Probability_Pct":47.7,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"GLO",
+        "Company_Name":"Globe Telecom, Inc.",
         "Close_Price":1853.0,
         "Target_Price_10pct":2038.3,
         "Probability_Pct":47.64,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"ACEN",
+        "Company_Name":"ACEN Corporation",
         "Close_Price":3.07,
         "Target_Price_10pct":3.38,
         "Probability_Pct":45.19,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"SMC",
+        "Company_Name":"San Miguel Corporation",
         "Close_Price":67.25,
         "Target_Price_10pct":73.98,
         "Probability_Pct":44.99,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"AEV",
+        "Company_Name":"Aboitiz Equity Ventures",
         "Close_Price":32.95,
         "Target_Price_10pct":36.25,
         "Probability_Pct":42.86,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"AP",
+        "Company_Name":"Aboitiz Power Corp.",
         "Close_Price":40.4,
         "Target_Price_10pct":44.44,
         "Probability_Pct":42.67,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"MBT",
+        "Company_Name":"Metropolitan Bank",
         "Close_Price":66.2,
         "Target_Price_10pct":72.82,
         "Probability_Pct":42.13,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"AGI",
+        "Company_Name":"Alliance Global Group",
         "Close_Price":8.13,
         "Target_Price_10pct":8.94,
         "Probability_Pct":41.86,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"MONDE",
+        "Company_Name":"Monde Nissin Corp.",
         "Close_Price":6.93,
         "Target_Price_10pct":7.62,
         "Probability_Pct":39.48,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"MEG",
+        "Company_Name":"PSE Stock",
         "Close_Price":2.08,
         "Target_Price_10pct":2.29,
         "Probability_Pct":38.77,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"LTG",
+        "Company_Name":"LT Group, Inc.",
         "Close_Price":14.6,
         "Target_Price_10pct":16.06,
         "Probability_Pct":38.44,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"RLC",
+        "Company_Name":"PSE Stock",
         "Close_Price":16.7,
         "Target_Price_10pct":18.37,
         "Probability_Pct":37.83,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     },
     {
         "Ticker":"MER",
+        "Company_Name":"Manila Electric Company",
         "Close_Price":578.0,
         "Target_Price_10pct":635.8,
         "Probability_Pct":37.14,
         "Signal":"AVOID \/ SELL",
         "Data_Date":"2026-07-07",
-        "Generated_At":"2026-07-28 06:24:54"
+        "Generated_At":"2026-07-28 07:40:31"
     }
 ]
