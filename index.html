@@ -634,10 +634,13 @@
           const tr = document.createElement('tr');
           tr.className = 'hover:bg-surface-container-high transition-colors group cursor-pointer relative border-b border-[#30353d]/50';
           
-          tr.innerHTML = `
-            <td class="p-stack-md font-headline-sm text-[18px] font-semibold flex items-center gap-stack-sm relative">
+tr.innerHTML = `
+            <td class="p-stack-md relative">
               <div class="absolute left-0 top-0 bottom-0 w-1 ${bgClass} opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              ${row.Ticker}
+              <div class="flex flex-col justify-center pl-2">
+                <span class="font-headline-sm text-[18px] font-semibold">${row.Ticker}</span>
+                <span class="font-data-sm text-[11px] text-on-surface-variant truncate w-40">${row.Company_Name || 'PSE Stock'}</span>
+              </div>
             </td>
             <td class="p-stack-md text-right">₱${row.Close_Price.toFixed(2)}</td>
             <td class="p-stack-md text-right text-on-surface-variant">₱${row.Target_Price_10pct.toFixed(2)}</td>
