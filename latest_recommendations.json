@@ -22,7 +22,7 @@
     },
     {
         "Ticker":"DMC",
-        "Company_Name":"PSE Stock",
+        "Company_Name":"DMCI Holdings, Inc.",
         "Close_Price":7.3,
         "Target_Price_10pct":8.03,
         "Probability_Pct":72.19,
@@ -72,7 +72,7 @@
     },
     {
         "Ticker":"SM",
-        "Company_Name":"PSE Stock",
+        "Company_Name":"SM Investments Corporation",
         "Close_Price":601.0,
         "Target_Price_10pct":661.1,
         "Probability_Pct":54.69,
@@ -142,7 +142,7 @@
     },
     {
         "Ticker":"CNPF",
-        "Company_Name":"PSE Stock",
+        "Company_Name":"Century Pacific Food, Inc.",
         "Close_Price":31.6,
         "Target_Price_10pct":34.76,
         "Probability_Pct":48.49,
@@ -172,7 +172,7 @@
     },
     {
         "Ticker":"JGS",
-        "Company_Name":"PSE Stock",
+        "Company_Name":"JG Summit Holdings, Inc.",
         "Close_Price":25.6,
         "Target_Price_10pct":28.16,
         "Probability_Pct":47.7,
@@ -262,7 +262,7 @@
     },
     {
         "Ticker":"MEG",
-        "Company_Name":"PSE Stock",
+        "Company_Name":"Megaworld Corporation",
         "Close_Price":2.08,
         "Target_Price_10pct":2.29,
         "Probability_Pct":38.77,
@@ -282,7 +282,7 @@
     },
     {
         "Ticker":"RLC",
-        "Company_Name":"PSE Stock",
+        "Company_Name":"Robinsons Land Corporation",
         "Close_Price":16.7,
         "Target_Price_10pct":18.37,
         "Probability_Pct":37.83,
