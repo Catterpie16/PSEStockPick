@@ -1,0 +1,302 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <style>
+    @layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0!important; } main > :last-child { margin-bottom: 0!important; } }
+    ::-webkit-scrollbar { display: none; }
+    .tab-active { border-bottom: 2px solid #03f394; color: #03f394; }
+    .tab-inactive { color: rgba(198, 198, 204, 0.6); }
+    .tab-inactive:hover { color: #dee2ec; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface":"#0f141b","on-surface":"#dee2ec","primary":"#c3c6d4","secondary":"#c1ffd4","secondary-fixed":"#56ffa7","tertiary":"#fabd00","error":"#ffb4ab","surface-container":"#1b2027","surface-container-high":"#252a32","surface-container-highest":"#30353d","on-surface-variant":"#c6c6cc","on-secondary":"#00391f","on-tertiary":"#3f2e00","on-error":"#690005"},"spacing":{"container-padding":"16px","gutter":"12px","stack-lg":"24px","stack-sm":"8px","unit":"4px","stack-md":"16px"},"fontFamily":{"headline-sm":["Inter"],"data-lg":["JetBrains Mono"],"label-caps":["Inter"],"headline-md":["Inter"],"body-lg":["Inter"],"data-md":["JetBrains Mono"],"headline-lg":["Inter"],"body-md":["Inter"],"data-sm":["JetBrains Mono"]}}}}
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 bg-[#0b0f19] border-b border-[#30353d]">
+    <div class="h-16 w-full px-container-padding flex items-center justify-between">
+      <div class="flex items-center gap-stack-md">
+        <div class="w-8 h-8 bg-tertiary rounded flex items-center justify-center">
+          <span class="material-symbols-outlined text-on-tertiary text-[20px]">query_stats</span>
+        </div>
+        <span class="font-headline-sm text-[18px] font-semibold tracking-tight">PSEi 30 <span class="text-tertiary">Quant</span></span>
+      </div>
+      <div class="flex items-center gap-stack-lg">
+        <div class="hidden lg:flex flex-col items-end">
+          <span class="font-label-caps text-[10px] text-on-surface-variant opacity-60">LAST UPDATED</span>
+          <span id="header-timestamp" class="font-data-sm text-[12px] text-secondary">Fetching...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full pt-16 bg-surface min-h-screen flex flex-col">
+    
+    <!-- Top Widget Row -->
+    <div class="px-container-padding pb-stack-lg pt-stack-md grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter z-10 relative">
+      <div class="bg-surface-container shadow-md rounded-xl p-stack-md flex flex-col justify-between group hover:-translate-y-1 transition-transform">
+        <div class="flex items-center justify-between z-10 mb-stack-lg">
+          <span class="font-label-caps text-[11px] font-bold text-on-surface-variant opacity-80 uppercase tracking-widest">Tracked Blue-Chips</span>
+        </div>
+        <div class="z-10 flex items-end gap-stack-sm">
+          <span id="metric-tracked" class="font-data-lg text-[40px] leading-none font-medium text-on-surface">--</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-high shadow-lg rounded-xl p-stack-md flex flex-col justify-between group hover:-translate-y-1 transition-transform">
+        <div class="flex items-center justify-between z-10 mb-stack-lg">
+          <span class="font-label-caps text-[11px] font-bold text-secondary uppercase tracking-widest flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> Active Buy Signals
+          </span>
+        </div>
+        <div class="z-10 flex items-end gap-stack-sm">
+          <span id="metric-buys" class="font-data-lg text-[40px] leading-none font-medium text-secondary">--</span>
+        </div>
+      </div>
+      <div class="bg-surface-container shadow-md rounded-xl p-stack-md flex flex-col justify-between group hover:-translate-y-1 transition-transform">
+        <div class="flex items-center justify-between z-10 mb-stack-lg">
+          <span class="font-label-caps text-[11px] font-bold text-on-surface-variant opacity-80 uppercase tracking-widest">Top Ranked Pick</span>
+        </div>
+        <div class="z-10 flex items-end gap-stack-sm">
+          <span id="metric-top-ticker" class="font-headline-lg text-[32px] font-bold text-tertiary">--</span>
+        </div>
+      </div>
+      <div class="bg-surface-container shadow-md rounded-xl p-stack-md flex flex-col justify-between group hover:-translate-y-1 transition-transform">
+        <div class="flex items-center justify-between z-10 mb-stack-lg">
+          <span class="font-label-caps text-[11px] font-bold text-on-surface-variant opacity-80 uppercase tracking-widest">Top Win Probability</span>
+        </div>
+        <div class="z-10 flex items-end gap-stack-sm">
+          <span id="metric-top-prob" class="font-data-lg text-[40px] leading-none font-medium text-primary">--%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="px-container-padding mb-stack-md flex gap-stack-lg border-b border-[#30353d]">
+      <button onclick="switchTab('tab-live')" id="btn-tab-live" class="font-headline-sm text-[18px] font-semibold pb-unit tab-active transition-colors">Live Signals</button>
+      <button onclick="switchTab('tab-methodology')" id="btn-tab-methodology" class="font-headline-sm text-[18px] font-semibold pb-unit tab-inactive transition-colors">ML Methodology</button>
+      <button onclick="switchTab('tab-performance')" id="btn-tab-performance" class="font-headline-sm text-[18px] font-semibold pb-unit tab-inactive transition-colors">Performance Metrics</button>
+    </div>
+
+    <!-- TAB 1: Live Signals -->
+    <div id="tab-live" class="px-container-padding flex-1">
+      <div class="bg-surface-container shadow-xl rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse whitespace-nowrap">
+            <thead>
+              <tr class="bg-surface-container-highest">
+                <th class="p-stack-md font-label-caps text-[11px] font-bold text-on-surface-variant">Ticker</th>
+                <th class="p-stack-md font-label-caps text-[11px] font-bold text-on-surface-variant text-right">Current Price (₱)</th>
+                <th class="p-stack-md font-label-caps text-[11px] font-bold text-on-surface-variant text-right">10% Target Price (₱)</th>
+                <th class="p-stack-md font-label-caps text-[11px] font-bold text-on-surface-variant text-right">Buy Probability (%)</th>
+                <th class="p-stack-md font-label-caps text-[11px] font-bold text-on-surface-variant text-right">Model Signal</th>
+              </tr>
+            </thead>
+            <tbody id="table-body" class="font-data-md text-[14px] font-medium text-on-surface">
+              <!-- Data injected via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: Methodology -->
+    <div id="tab-methodology" class="hidden px-container-padding flex-1 max-w-5xl mx-auto w-full">
+      <div class="bg-surface-container rounded-xl p-8 space-y-8">
+        <div>
+          <h2 class="text-[24px] font-bold text-secondary mb-2">1. Evolution of the Target Variable</h2>
+          <p class="text-on-surface-variant leading-relaxed">Initially, we attempted to predict long-term horizons (60+ days). However, this introduced massive noise and confused the algorithms. We pivoted to a much cleaner, strict quantitative question:</p>
+          <div class="bg-surface-container-highest p-4 rounded-lg mt-4 border-l-4 border-secondary">
+            <p class="font-bold text-[18px]">"Will this stock gain at least 10% within the next 20 trading days?"</p>
+          </div>
+          <p class="text-on-surface-variant mt-2 text-[14px]">Rationale: A 10% gain in a month represents a highly profitable "swing trade," perfectly suited for blue-chip stocks on the PSEi.</p>
+        </div>
+        
+        <div>
+          <h2 class="text-[24px] font-bold text-tertiary mb-2">2. Market Regime & Run-Time Optimization</h2>
+          <p class="text-on-surface-variant leading-relaxed">More data is not always better. Feeding the model 10 years of historical data forced it to learn from the 2018 bull market peak and the extreme volatility of the 2020 COVID crash. This "Concept Drift" degraded our accuracy.</p>
+          <ul class="list-disc pl-5 mt-3 space-y-2 text-on-surface-variant">
+            <li><strong class="text-on-surface">The Fix:</strong> We sliced the dataset to focus exclusively on the recent 5-year market regime (Mid-2021 to Present).</li>
+            <li><strong class="text-on-surface">The Result:</strong> By isolating the current "sideways" market behavior, the model learned highly relevant patterns. Reducing dataset size also <strong>cut our computational run time by more than half.</strong></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-[24px] font-bold text-primary mb-2">3. Feature Engineering</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-3">Raw price data is highly noisy. We engineered 10 highly specific features, dropping underperforming ones like the traditional RSI. Core features include:</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-surface-container-high p-4 rounded-lg">
+              <span class="font-bold text-secondary block mb-1">Trend Extension</span>
+              <span class="text-sm text-on-surface-variant">Dist_SMA50 & Dist_SMA200 measures how stretched a stock is from its moving averages.</span>
+            </div>
+            <div class="bg-surface-container-high p-4 rounded-lg">
+              <span class="font-bold text-secondary block mb-1">Institutional Flow</span>
+              <span class="text-sm text-on-surface-variant">Foreign_Intensity tracks institutional money versus retail noise.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Performance -->
+    <div id="tab-performance" class="hidden px-container-padding flex-1 max-w-5xl mx-auto w-full">
+      <div class="bg-surface-container rounded-xl p-8 space-y-8">
+        <div>
+          <h2 class="text-[24px] font-bold text-secondary mb-2">1. Handling the Math: Class Imbalance (9.70)</h2>
+          <p class="text-on-surface-variant leading-relaxed">A 10% gain in 20 days is a rare event for Philippine mega-caps—it happens roughly 1 out of every 10 times. To prevent the model from simply guessing "0" to achieve artificial accuracy, we calculated an exact class imbalance ratio of <strong>9.70</strong> and applied algorithmic penalties (<code class="text-tertiary">scale_pos_weight</code>). This forced the models to actively hunt for true breakouts.</p>
+        </div>
+
+        <div>
+          <h2 class="text-[24px] font-bold text-tertiary mb-4">2. Algorithm Comparison</h2>
+          <div class="overflow-hidden rounded-lg border border-surface-container-highest mb-4">
+            <table class="w-full text-left">
+              <thead class="bg-surface-container-highest text-on-surface-variant text-[12px] uppercase">
+                <tr><th class="p-4">Model (80/20 Chronological Split)</th><th class="p-4">Test Accuracy</th><th class="p-4">ROC-AUC Score</th></tr>
+              </thead>
+              <tbody class="text-on-surface">
+                <tr class="border-b border-surface-container-highest bg-surface-container-high">
+                  <td class="p-4 font-bold text-secondary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">emoji_events</span> Random Forest</td>
+                  <td class="p-4">70.98%</td><td class="p-4 font-bold">0.6588</td>
+                </tr>
+                <tr>
+                  <td class="p-4">XGBoost</td><td class="p-4">71.15%</td><td class="p-4">0.6540</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-on-surface-variant italic">Our ROC-AUC score jumped from ~0.51 in early iterations to an outstanding 0.6588. In quantitative finance, an ROC-AUC above 0.55 provides a statistical edge.</p>
+        </div>
+
+        <div>
+          <h2 class="text-[24px] font-bold text-error mb-2">3. The Ultimate Shield: Risk Management</h2>
+          <p class="text-on-surface-variant leading-relaxed">The true value of this model lies in its ability to protect capital.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div class="border border-error/30 p-6 rounded-lg bg-error/5">
+              <span class="text-[32px] font-bold text-error block">92%</span>
+              <span class="font-bold text-on-surface block mb-2">Precision on Class 0 (Sell/Avoid)</span>
+              <span class="text-sm text-on-surface-variant">When the Random Forest model signals to avoid a stock, it is correct 92% of the time. It serves as an elite risk-management filter.</span>
+            </div>
+            <div class="border border-secondary/30 p-6 rounded-lg bg-secondary/5">
+              <span class="text-[32px] font-bold text-secondary block">45%</span>
+              <span class="font-bold text-on-surface block mb-2">Recall on Class 1 (Buy)</span>
+              <span class="text-sm text-on-surface-variant">Despite 10% breakouts being incredibly rare, the model successfully captures nearly half of all true breakouts in the test dataset.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="w-full mt-12 py-stack-lg bg-[#171c23] shadow-inner relative z-0 mt-auto">
+      <div class="px-container-padding max-w-4xl mx-auto flex items-start gap-stack-sm opacity-80">
+        <span class="material-symbols-outlined text-on-surface-variant text-[20px] shrink-0 mt-1">science</span>
+        <p class="font-body-md text-[14px] text-on-surface-variant text-justify">
+          <strong class="font-bold text-on-surface">Academic Disclaimer:</strong> This platform uses experimental machine learning models for educational purposes. Content provided does not constitute financial advice. Historical performance and ML probability scores do not guarantee future results in the PSEi.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      // Hide all tabs
+      document.getElementById('tab-live').classList.add('hidden');
+      document.getElementById('tab-methodology').classList.add('hidden');
+      document.getElementById('tab-performance').classList.add('hidden');
+      
+      // Reset all buttons
+      const btns = ['btn-tab-live', 'btn-tab-methodology', 'btn-tab-performance'];
+      btns.forEach(btn => {
+        document.getElementById(btn).className = "font-headline-sm text-[18px] font-semibold pb-unit tab-inactive transition-colors";
+      });
+
+      // Show selected tab & set active class
+      document.getElementById(tabId).classList.remove('hidden');
+      document.getElementById('btn-' + tabId).className = "font-headline-sm text-[18px] font-semibold pb-unit tab-active transition-colors";
+    }
+
+    // Fetch and Populate JSON Data
+    async function loadData() {
+      try {
+        const response = await fetch('latest_recommendations.json');
+        const data = await response.json();
+        
+        // 1. Update Metrics
+        document.getElementById('metric-tracked').innerText = data.length;
+        const strongBuys = data.filter(d => d.Signal === 'STRONG BUY').length;
+        document.getElementById('metric-buys').innerText = strongBuys;
+        
+        if(data.length > 0) {
+          document.getElementById('metric-top-ticker').innerText = data[0].Ticker;
+          document.getElementById('metric-top-prob').innerText = data[0].Probability_Pct + '%';
+          document.getElementById('header-timestamp').innerText = data[0].Generated_At;
+        }
+
+        // 2. Populate Table
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = ''; // clear loading state
+
+        data.forEach(row => {
+          let colorClass, bgClass, icon, signalText;
+          
+          if (row.Signal === 'STRONG BUY') {
+            colorClass = 'text-secondary';
+            bgClass = 'bg-secondary';
+            icon = 'trending_up';
+            signalText = 'STRONG BUY';
+          } else if (row.Signal === 'NEUTRAL / WATCH') {
+            colorClass = 'text-tertiary';
+            bgClass = 'bg-tertiary';
+            icon = 'horizontal_rule';
+            signalText = 'NEUTRAL';
+          } else {
+            colorClass = 'text-error';
+            bgClass = 'bg-error';
+            icon = 'trending_down';
+            signalText = 'AVOID';
+          }
+
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-surface-container-high transition-colors group cursor-pointer relative border-b border-[#30353d]/50';
+          
+          tr.innerHTML = `
+            <td class="p-stack-md font-headline-sm text-[18px] font-semibold flex items-center gap-stack-sm relative">
+              <div class="absolute left-0 top-0 bottom-0 w-1 ${bgClass} opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              ${row.Ticker}
+            </td>
+            <td class="p-stack-md text-right">₱${row.Close_Price.toFixed(2)}</td>
+            <td class="p-stack-md text-right text-on-surface-variant">₱${row.Target_Price_10pct.toFixed(2)}</td>
+            <td class="p-stack-md text-right">
+              <div class="flex items-center justify-end gap-stack-sm">
+                <span class="${colorClass}">${row.Probability_Pct}%</span>
+                <div class="w-16 h-1 bg-surface-container-highest rounded-full overflow-hidden flex-shrink-0">
+                  <div class="h-full ${bgClass} rounded-full" style="width: ${row.Probability_Pct}%"></div>
+                </div>
+              </div>
+            </td>
+            <td class="p-stack-md text-right">
+              <span class="inline-flex items-center gap-1 px-2 py-1 ${bgClass}/20 ${colorClass} font-label-caps text-[11px] font-bold rounded">
+                <span class="material-symbols-outlined text-[12px]">${icon}</span> ${signalText}
+              </span>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        document.getElementById('table-body').innerHTML = '<tr><td colspan="5" class="p-4 text-center text-error">Could not load JSON data. Ensure latest_recommendations.json is in the same folder.</td></tr>';
+      }
+    }
+
+    // Run on load
+    loadData();
+  </script>
+</body>
+</html>
